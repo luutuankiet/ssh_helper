@@ -1,0 +1,10 @@
+!#/bin/bash
+
+# function to save previous ssh info
+# SSH config : ~/utils/ssh_config.txt
+. ~/utils/ssh_config.sh
+# load required parameters from config file
+echo $IP
+echo $port
+
+
