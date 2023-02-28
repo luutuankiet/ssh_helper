@@ -7,7 +7,7 @@
 source ~/utils/ssh_helper/ssh_config.sh
 
 # for first time config, asks for port and username (and password):
-# TODO : handle workflow with case when user wants to add new ip addr
+# TODO : handle workflow with 
 
 if ($ port, usrname, password is !set)
   dest_dir = ~/utils/ssh_helper/ssh_config.sh
