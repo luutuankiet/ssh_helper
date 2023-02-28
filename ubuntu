@@ -6,8 +6,13 @@
 # TODO: make sure hard-coded value won't be published.
 source ~/utils/ssh_helper/ssh_config.sh
 
+# function to execute ssh:
+ssh_helper() {
+echo "loging in..."
+sshpass -p $password ssh $username@$ip -p $port
+}
+
 # for first time config, asks for port and username (and password):
-# TODO : handle workflow with case when user wants to add new ip addr
 
 if ($ port, usrname, password is !set)
   dest_dir = ~/utils/ssh_helper/ssh_config.sh
@@ -27,43 +32,21 @@ if ($ port, usrname, password is !set)
 
 
 # from 2nd time onwards
-
+echo "saved IP config : $ip"
 echo "same ip address?(y/n)"
 read same_ip
 
 # happy case : same ip address
 
 if $same_ip == y then
-	echo "loging in..." 
-	sshpass -p $password ssh $username@$ip -p $port
+ssh_helper()
+
 
 # alternative case : changed ip address
-# no action required here; var changed early on in upper script.
-
-
-#
-#
-
-
-
-
-
-
-
-#
-#
-#
-#
-# 
-
-step
-
-
-# function to save previous ssh info
-# SSH config : ~/utils/ssh_config.txt
-. ~/utils/ssh_config.sh
-# load required parameters from config file
-echo $IP
-echo $port
-
+if $name_ip == n then
+echo "input new ip addr: "
+new_ip=read ip
+sed -i 's/ip=.*/ip=$new_ip/' $dest_dir
+source ~/utils/ssh_helper/ssh_config.sh
+ssh_helper()
 
