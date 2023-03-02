@@ -2,4 +2,7 @@
 
 a helper to do remote ssh on a non-static ip machine.
 
-TBC
+todo
+
+make install requirements, configs, alias, chmod to execute
+
